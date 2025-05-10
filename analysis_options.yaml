@@ -1,0 +1,15 @@
+analyzer:
+  errors:
+    # Игнорировать предупреждения о неиспользуемых переменных
+    unused_local_variable: ignore
+    unused_element: ignore
+    # Игнорировать предупреждения о бесполезных проверках 
+    # (например, 42 is int бесполезная проверка, которая всегда true)
+    unnecessary_type_check: ignore
+    # Игнорировать предупреждения о коде который никогда не выполнится
+    dead_code: ignore
+
+linter:
+  rules:
+    # Предпочитать одиночные кавычки
+    - prefer_single_quotes
