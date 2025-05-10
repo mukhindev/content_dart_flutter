@@ -3,7 +3,7 @@ import 'dart:io';
 /// Обработка md файлов
 
 /// RegExp кодового блока в md
-const CODE_BLOCK_REGEXP = r'```(\w+) (.+?)\n([\s\S]*?)```';
+const CODE_BLOCK_REGEXP = r'```(\w+) (.+?)(:?\d+-\d+)?\n([\s\S]*?)```';
 
 void main() async {
   await findAndProcessMarkdownFiles(Directory.current);
@@ -55,28 +55,59 @@ Future<String> replaceCodeBlocks(
 
     // Добавляем текст контента от предыдущего блока (либо начала файла) до текущего кодового блоком
     updatedContent.write(content.substring(lastMatchEnd, match.start));
-
-    final language = match.group(1);
+    // Путь до файла с кодом
     final codeRelativePath = match.group(2);
+    // Файл с кодом
     final codeFile = File('${parentDirectory.path}/$codeRelativePath');
     final treeCharacter = isLast ? ' └─' : ' ├─';
 
+    // Если файл с кодом существует
     if (await codeFile.exists()) {
-      final codeContent = await codeFile.readAsString();
-      final codeBlock = '```$language $codeRelativePath\n$codeContent```';
-      final hasDiff = content.substring(match.start, match.end) != codeBlock;
+      // Язык кодового блока
+      final language = match.group(1);
+      // Получаем код из файла
+      var codeContent = await codeFile.readAsString();
+      // Диапазон строк в сыром формате :1-9,
+      var linesRangeMarker = match.group(3);
+      // Разбиваем метку ':1-9'? на [1, 9]?
+      final linesRange =
+          linesRangeMarker
+              ?.replaceFirst(':', '')
+              .split('-')
+              .map((element) => int.parse(element))
+              .toList();
+
+      // Если есть диапазон строк, нужно выбрать только их
+      if (linesRange is List<int>) {
+        // Разбиваем код на линии
+        final codeLines = codeContent.split(RegExp(r'\r\n?|\n'));
+
+        // Переопределяем контент кода только нужными строками
+        codeContent =
+            codeLines.sublist(linesRange[0] - 1, linesRange[1]).join('\n') +
+            '\n';
+      }
+
+      final newCodeBlock =
+          '```$language $codeRelativePath${linesRangeMarker ?? ''}\n$codeContent```';
+
+      // Есть разница между кодом в блоке и кодом в файле
+      final hasDiff = content.substring(match.start, match.end) != newCodeBlock;
 
       if (hasDiff) {
+        // Вывод если есть разница в коде
         print('$treeCharacter \x1B[33m{}: ${codeFile.path} *\x1B[0m');
       } else {
+        // Вывод если не было изменений в коде
         print('$treeCharacter {}: ${codeFile.path}');
       }
 
       // Добавляем полученный из файла код в кодовый блок контента
-      updatedContent.write(codeBlock);
+      updatedContent.write(newCodeBlock);
     } else {
-      // Если файл не найден, оставляем оригинальный кодовый блок без изменений
+      // Если файл с кодом не найден, оставляем оригинальный кодовый блок без изменений
       updatedContent.write(match.group(0));
+      // Вывод если файл с кодом не найден
       print('$treeCharacter \x1B[31m{}: ${codeFile.path} !\x1B[0m');
     }
 
