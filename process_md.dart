@@ -67,6 +67,8 @@ Future<String> replaceCodeBlocks(
       final language = match.group(1);
       // Получаем код из файла
       var codeContent = await codeFile.readAsString();
+      // Убираем комментирование через ////, так комментированы строки которые в реальном коде выдают ошибки
+      codeContent = codeContent.replaceAll('//// ', '');
       // Диапазон строк в сыром формате :1-9,
       final linesRangeMarker = match.group(3);
       // Разбиваем метку ':1-9'? на [1, 9]?

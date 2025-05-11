@@ -15,8 +15,8 @@ void main() {
   // Метод есть на List<int> или List<double>
   print(numbers.sum());
 
-  // Но его нет для List<String>
-  // print(letters.sum());
+  // ❌ Но его нет для List<String>
+  print(letters.sum()); // Ошибка
 }
 
 // Расширяем возможности List с типом num
