@@ -15,16 +15,20 @@ void main() {
   // Два одинаковых объекта по ссылке
   print(identical(list1, list2)); // true
 
+  // Ещё вариант использования const
+  List<int> list5 = const [1, 2, 3];
+  List<int> list6 = const [1, 2, 3];
+  print(identical(list5, list6)); // true
+
   // Не используем const
   final list3 = [1, 2, 3];
   final list4 = [1, 2, 3];
   // Это 2 разных объекта
   print(identical(list3, list4)); // false
 
-  // Ещё вариант использования const
-  final list5 = const [1, 2, 3];
-  final list6 = const [1, 2, 3];
-  print(identical(list5, list6)); // true
-  // Сравнение с первым
-  print(identical(list1, list6)); // true
+  // Инициализация final может быть произведена позже, но обычно почти сразу
+  final x;
+  // Нельзя обратиться, ещё не инициализирована
+  // print(x);
+  x = 1;
 }

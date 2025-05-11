@@ -68,7 +68,7 @@ Future<String> replaceCodeBlocks(
       // Получаем код из файла
       var codeContent = await codeFile.readAsString();
       // Диапазон строк в сыром формате :1-9,
-      var linesRangeMarker = match.group(3);
+      final linesRangeMarker = match.group(3);
       // Разбиваем метку ':1-9'? на [1, 9]?
       final linesRange =
           linesRangeMarker
@@ -96,10 +96,12 @@ Future<String> replaceCodeBlocks(
 
       if (hasDiff) {
         // Вывод если есть разница в коде
-        print('$treeCharacter \x1B[33m{}: ${codeFile.path} *\x1B[0m');
+        print(
+          '$treeCharacter \x1B[33m{}: ${codeFile.path}${linesRangeMarker ?? ''} *\x1B[0m',
+        );
       } else {
         // Вывод если не было изменений в коде
-        print('$treeCharacter {}: ${codeFile.path}');
+        print('$treeCharacter {}: ${codeFile.path}${linesRangeMarker ?? ''}');
       }
 
       // Добавляем полученный из файла код в кодовый блок контента

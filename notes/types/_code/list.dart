@@ -40,9 +40,9 @@ void main() {
   print(sum); // 6
 
   // Условия при объявлении списков (collection if elements)
-  var check = false;
-  var myList = ['Первый', 'Второй', if (check) 'Третий'];
-  print(myList); // [Первый, Второй]
+  var isActive = false;
+  var positionList = ['Первый', 'Второй', if (isActive) 'Третий'];
+  print(positionList); // [Первый, Второй]
 
   // Циклы при объявлении списков (collection for elements)
   var intList = [1, 2, 3];
