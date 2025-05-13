@@ -36,8 +36,10 @@ void main() {
   // Деструктуризация всех значений
   var (x, y, z) = positions;
   print('$x $y $z'); // 10 50 0
-  var (name: userName, age: useAge) = user;
-  print('$userName ${useAge}'); // Sergey 38
+  // Именованные значения мы можем извлечь под другим именем.
+  // Если извлечь нужно под тем же именем, можно сократить запись (см `:age`)
+  var (name: userName, :age) = user;
+  print('$userName ${age}'); // Sergey 38
   var (text, third, lang: language) = message;
   // Обратить внимание, именованные в любом порядке,
   // неименованные в порядке как идут.
