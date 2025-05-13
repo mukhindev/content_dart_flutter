@@ -1,13 +1,31 @@
 import 'dart:io';
 
-/// Обработка md файлов
+/// Программа `process_md.dart` выполняет этапы автоматизации над md файлами:
+/// * Обновляет кодовые блоки в md файлах, содержимым из связанных файлов
+///
+/// ```shell
+/// dart process_md.dart
+/// ```
+///
+/// Вывод в консоль:
+///
+/// | Метка    | Цвет    | Значение                       |
+/// | -        | -       | -                              |
+/// | `MD`     |         | Найден md файл                 |
+/// | `{}`     |         | Найден связанный кодовый блок  |
+/// | `:23-27` |         | Связанный диапазон строк       |
+/// | `*`      | Жёлтый  | Код был обновлён               |
+/// | `!`      | Красный | Файл связанного кода не найден |
+void main() async {
+  await findAndProcessMarkdownFiles(Directory.current);
+}
 
 /// RegExp кодового блока в md
 const CODE_BLOCK_REGEXP = r'```(\w+) (.+?)(:?\d+-\d+)?\n([\s\S]*?)```';
 
-void main() async {
-  await findAndProcessMarkdownFiles(Directory.current);
-}
+/// Комментарий, который нужно раскомментировать
+/// (например, для строк которые вызывают ошибку у анализаторов кода)
+const REMOVABLE_COMMENT = '////';
 
 /// Поиск и обработка md файлов
 Future<void> findAndProcessMarkdownFiles(Directory directory) async {
@@ -68,7 +86,7 @@ Future<String> replaceCodeBlocks(
       // Получаем код из файла
       var codeContent = await codeFile.readAsString();
       // Убираем комментирование через ////, так комментированы строки которые в реальном коде выдают ошибки
-      codeContent = codeContent.replaceAll('//// ', '');
+      codeContent = codeContent.replaceAll('$REMOVABLE_COMMENT ', '');
       // Диапазон строк в сыром формате :1-9,
       final linesRangeMarker = match.group(3);
       // Разбиваем метку ':1-9'? на [1, 9]?
