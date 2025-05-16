@@ -1,13 +1,13 @@
-# Extension
+# Расширение методов (Extension methods)
 
-Возможность расширить поведение класса не модифицируя его.
+Возможность расширить методы класса не модифицируя его.
 
-В отличии от JavaScript, где подобное делается анти-подходом Monkey Patching,
+В отличие от JavaScript, где подобное делается анти-подходом Monkey Patching,
 extension в Dart не модифицирует оригинальный класс.
 
 Расширение происходит только там, где оно объявлено или куда импортировано.
 
-```dart _code/extension.dart
+```dart _code/extension_methods.dart
 void main() {
   List<int> numbers = [1, 2, 3];
   List<String> letters = ['a', 'b', 'c'];
