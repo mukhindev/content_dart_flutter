@@ -1,4 +1,6 @@
-# Stream
+# Потоки (Stream)
+
+## asBroadcastStream()
 
 ```dart _code/stream.dart
 Future<void> main() async {
@@ -42,5 +44,25 @@ Stream<String> createStream() async* {
 
 Future<void> delay(int seconds) {
   return Future.delayed(Duration(seconds: seconds));
+}
+```
+
+## Цикл в потоке
+
+Например для создания бесконечного потока
+
+```dart _code/infinity_stream.dart
+void main() {
+  final sub = counterStream().listen((value) {
+    print('Получено значение: $value');
+  });
+}
+
+Stream<int> counterStream() async* {
+  int i = 0;
+  while (true) {
+    await Future.delayed(Duration(milliseconds: 500));
+    yield i++;
+  }
 }
 ```
