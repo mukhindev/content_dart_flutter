@@ -30,9 +30,7 @@ void main() {
 
 ```dart
 void main() {
-  dynamic foo = 42;
-  
-  print(foo is dynamic); // true
+  // Мы смогли присвоить dynamic в переменную с типом type 
+  Type foo = dynamic;
 }
-
 ```
