@@ -66,7 +66,7 @@ lib
 │   ├── platform
 │   └── failures
 ├── features
-│	└── {feature_name}
+│   └── {feature_name}
 │       ├── data             ─┐
 │       │   ├── data_sources  │  Слой
 │       │   ├── models        │  данных
