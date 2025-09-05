@@ -1,3 +1,11 @@
+---
+date: 2025-05-17 12:12 +2
+title: if case
+description: Возможность использовать Pattern Matching в if.
+tags:
+    - dart
+---
+
 # `if case`
 
 Возможность использовать [Pattern Matching](../patterns/pattern_matching.md) в `if`

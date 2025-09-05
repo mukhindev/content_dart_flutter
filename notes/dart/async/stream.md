@@ -1,3 +1,12 @@
+---
+date: 2025-07-02 00:00 +2
+title: Потоки (Stream)
+description: Изучаем потоки в Dart.
+tags:
+    - async
+    - dart
+---
+
 # Потоки (Stream)
 
 ## asBroadcastStream()

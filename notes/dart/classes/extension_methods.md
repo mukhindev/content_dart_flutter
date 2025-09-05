@@ -1,3 +1,12 @@
+---
+date: 2025-07-02 01:00 +2
+title: Расширение методов (Extension methods)
+description: Расширяем классы в Dart без антипаттернов (Monkey Patching).
+tags:
+    - async
+    - dart
+---
+
 # Расширение методов (Extension methods)
 
 Возможность расширить методы класса не модифицируя его.

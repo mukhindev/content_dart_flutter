@@ -1,3 +1,11 @@
+---
+date: 2025-05-17 10:00 +2
+title: О языке Dart
+description: Очень кратко о языке Dart. Основные моменты.
+tags:
+    - dart
+---
+
 # Dart
 
 Разработчик Google

@@ -1,3 +1,11 @@
+---
+date: 2025-05-17 10:00 +2
+title: Switch
+description: Switch в Dart.
+tags:
+    - dart
+---
+
 # Switch
 
 ## Switch совместно с операциями сравнения и логическими операциями

@@ -1,3 +1,12 @@
+---
+date: 2025-05-17 10:00 +2
+title: Деструктуризация (destructuring)
+description:
+tags:
+    - dart
+---
+
+
 # Деструктуризация (destructuring)
 
 ## Деструктуризация списка `List`

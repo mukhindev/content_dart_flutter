@@ -1,3 +1,14 @@
+---
+date: 2025-05-17 10:00 +2
+title: iOS/Swift через Platform Channel
+description: Как из Flutter выполнить нативный iOS код на Swift.
+tags:
+    - dart
+    - flutter
+    - ios
+    - swift
+---
+
 # iOS/Swift через Platform Channel
 
 Вызов iOS/Swift кода во Flutter через Platform Channel.

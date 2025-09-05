@@ -1,3 +1,11 @@
+---
+date: 2025-03-20 14:00 +2
+title: Null безопасность (Null safety)
+description: Начиная с версии Dart 2.12 все переменные создаются как необнуляемые (Non-nullable).
+tags:
+    - dart
+---
+
 # Null безопасность (Null safety)
 
 ## Non-nullable и Nullable

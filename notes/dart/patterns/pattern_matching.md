@@ -1,5 +1,12 @@
-# Pattern Matching
+---
+date: 2025-05-17 10:00 +2
+title: Pattern Matching
+description: Мощь Pattern Matching.
+tags:
+    - dart
+---
 
+# Pattern Matching
 
 Возможность сопоставлять значение с шаблоном. Не просто проверка на строгое равенство по значению, но и проверка соответствия по форме.  
 Применяется в основном с [`switch case`](../flow/switch.md) и `if case`.

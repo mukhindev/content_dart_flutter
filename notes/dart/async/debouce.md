@@ -1,3 +1,13 @@
+---
+date: 2025-05-24 23:00 +2
+title: Debounce на Dart
+description: Создаём утилиту для debounce в Dart.
+tags:
+    - async
+    - dart
+    - utils
+---
+
 # Debounce на Dart
 
 Реализация debounce на Dart
