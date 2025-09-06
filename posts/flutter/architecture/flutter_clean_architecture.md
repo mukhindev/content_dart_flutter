@@ -1,7 +1,8 @@
 ---
-date: 2025-05-17 10:00 +2
 title: Архитектура Flutter приложения
+date: 2025-05-17 10:00 +2
 description: В среде разработчиков на Flutter популярны идеи Чистой Архитектуры (Clean Architecture). Пример реализации данной архитектуры.
+pinned: true
 tags:
     - dart
     - flutter
