@@ -1,6 +1,7 @@
 ---
 date: 2025-05-17 10:00 +2
 title: Flutter BuildContext
+pinned: true
 description:
 tags:
     - dart
@@ -23,7 +24,7 @@ tags:
 В метод `of` передаётся соответствующий контекст и
 происходит подписка к ближайшему `Theme`.
 
-Мы могли бы получить тоже самое с:
+Мы могли бы получить то же самое с:
 
 ```dart
 context.dependOnInheritedWidgetOfExactType<Theme>();
