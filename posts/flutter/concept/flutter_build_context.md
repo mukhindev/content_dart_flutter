@@ -42,3 +42,12 @@ context.dependOnInheritedWidgetOfExactType<Theme>();
 
 Предварительное помещение результат вызова `.of(context)` в `final`, 
 скорее больше в вопросу читаемости, чем оптимизации.
+
+## Для разработчиков React
+
+Когда приходишь во Flutter после React, многие идеи кажутся похожими, но именно `context` может сильно запутать.
+
+
+`createContext` в React и `BuildContext` во Flutter служат для разных целей.
+
+Если вы хотите делать тоже самое, что делали с помощью React Context, но во Flutter, рассмотрите `InheritedWidget`.
